@@ -134,6 +134,7 @@ const MainHistory = () => {
                       width: "80%",
                       height: "75%",
                       mt: 10,
+                      overflow: "scroll",
                       backgroundColor: "white",
                       border: "thick double #32a1ce",
                     }}
@@ -173,8 +174,9 @@ const MainHistory = () => {
                     maxWidth={"sm"}
                     sx={{
                       width: "80%",
-                      height: "50%",
+                      height: "60%",
                       mt: 10,
+                      overflow: "scroll",
                       backgroundColor: "white",
                       border: "thick double #32a1ce",
                     }}
