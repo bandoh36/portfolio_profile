@@ -3,30 +3,33 @@ name: Upload files to S3
 on:
   push:
     branches:
-    - master
+      - master
 
 env:
-  MY_AWS_REGION: 'ap-northeast-1'
-  AWS_ROLENAME: 'role_githubactions_s3fullaccess'
-  AWS_S3_BUCKET: 'akisute-portfolio'
-  SOURCE_DIR: 'build'
+  MY_AWS_REGION: "ap-northeast-1"
+  AWS_ROLENAME: "role_githubactions_s3fullaccess"
+  AWS_S3_BUCKET: "akisute-portfolio"
+  SOURCE_DIR: "build"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: Install Dependencies
-      run: npm install
-    - name: Build
-      run: npm run build
-    - name: Configure AWS credentials with IAM Role
-      uses: aws-actions/configure-aws-credentials@main
-      with:
-        role-to-assume: arn:aws:iam::${{secrets.AWS_ACCOUNT_ID}}:role/${{env.AWS_ROLENAME}}
-        aws-region: ${{env.MY_AWS_REGION}}
-    - name: Remove files to S3
-      run: aws s3 rm s3://${{env.AWS_S3_BUCKET}}/ --recursive '.*git*'
-    - name: Copy files to S3
-      run: aws s3 cp ${{env.SOURCE_DIR}} s3://${{env.AWS_S3_BUCKET}}/--recursive '.*git*'
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Configure AWS credentials with IAM Role
+        uses: aws-actions/configure-aws-credentials@main
+        with:
+          role-to-assume: arn:aws:iam::${{secrets.AWS_ACCOUNT_ID}}:role/${{env.AWS_ROLENAME}}
+          aws-region: ${{env.MY_AWS_REGION}}
+      - name: Remove files to S3
+        run: aws s3 rm s3://${{env.AWS_S3_BUCKET}}/ --recursive '.*git*'
+      - name: Copy files to S3
+        run: aws s3 cp ${{env.SOURCE_DIR}} s3://${{env.AWS_S3_BUCKET}}/--recursive '.*git*'
