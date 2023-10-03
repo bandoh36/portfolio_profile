@@ -4,7 +4,7 @@ import ProfileImg from "./image/Profile.jpg";
 
 // プロフィール内容要編集
 export const ProfileContents = {
-  title: "プロフィールああaa",
+  title: "プロフィールああaaa",
   name: "坂東 俊亮 ( Shunsuke Bando )",
   body1: "1996年3月5日生まれ   28歳   社会人5年目",
   body2: "千葉大学理学部物理学科卒業後、保険系SIerに就職。",
