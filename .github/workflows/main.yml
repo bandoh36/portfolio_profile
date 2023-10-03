@@ -6,13 +6,12 @@ on:
       - master
 
 env:
-  env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    MY_AWS_REGION: "ap-northeast-1"
-    AWS_ROLENAME: "role_githubactions_s3fullaccess"
-    AWS_S3_BUCKET: "akisute-portfolio"
-    SOURCE_DIR: "build"
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  MY_AWS_REGION: "ap-northeast-1"
+  AWS_ROLENAME: "role_githubactions_s3fullaccess"
+  AWS_S3_BUCKET: "akisute-portfolio"
+  SOURCE_DIR: "build"
 
 jobs:
   build:
