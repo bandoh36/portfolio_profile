@@ -18,7 +18,7 @@ const getSkillContents = (type) => {
 };
 export const SkillTable = (props) => {
   return (
-    <React.Fragment>
+    <>
       <Typography variant="h6" color="primary">
         {props.id === "front" && "フロントエンド"}
         {props.id === "back" && "バックエンド"}
@@ -44,6 +44,6 @@ export const SkillTable = (props) => {
           ))}
         </TableBody>
       </Table>
-    </React.Fragment>
+    </>
   );
 };
